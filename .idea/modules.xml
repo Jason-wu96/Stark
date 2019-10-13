@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/Stark.iml" filepath="$PROJECT_DIR$/.idea/Stark.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../stark组件/.idea/stark组件.iml" filepath="$PROJECT_DIR$/../stark组件/.idea/stark组件.iml" />
+    </modules>
+  </component>
+</project>
