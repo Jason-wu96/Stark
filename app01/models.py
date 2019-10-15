@@ -1,6 +1,6 @@
 from django.db import models
 
-
+# 作者表
 class Author(models.Model):
     nid = models.AutoField(primary_key=True)
     name=models.CharField( max_length=32)
@@ -10,7 +10,7 @@ class Author(models.Model):
     def __str__(self):
         return self.name
 
-
+# 作者详情表
 class AuthorDetail(models.Model):
     nid = models.AutoField(primary_key=True)
     birthday=models.DateField()
@@ -20,7 +20,7 @@ class AuthorDetail(models.Model):
     def __str__(self):
         return self.telephone
 
-
+# 出版社表
 class Publish(models.Model):
     nid = models.AutoField(primary_key=True)
     name=models.CharField( max_length=32)

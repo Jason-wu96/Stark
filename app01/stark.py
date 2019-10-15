@@ -29,6 +29,7 @@ class BookConfig(ModelStark):
         return HttpResponse("批量初始化OK")
     patch_init.short_description = "批量初始化"
     actions = [patch_init]
+
 site.register(Book,BookConfig)
 site.register(Publish)
 site.register(Author)
