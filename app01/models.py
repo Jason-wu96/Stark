@@ -30,7 +30,7 @@ class Publish(models.Model):
     def __str__(self):
         return self.name
 
-
+# 图书表
 class Book(models.Model):
     nid = models.AutoField(primary_key=True)
     title = models.CharField( max_length=32)
