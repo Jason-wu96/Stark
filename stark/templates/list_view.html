@@ -1,3 +1,4 @@
+{#  说明： list_view展示页面   #}
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -6,92 +7,81 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.css">
     <script src="/static/js/jquery-1.12.4.min.js"></script>
-
     <style>
-        .filter a{
+        .filter a {
             text-decoration: none;
             color: grey;
         }
-
-        .active{
-            color: rebeccapurple!important;
+        .active {
+            color: rebeccapurple !important;
         }
     </style>
 </head>
 <body>
-
 <h4>数据列表</h4>
-
-
 <div class="container">
     <div class="row">
         <div class="col-md-9">
             <a href="{{ add_url }}" class="btn btn-primary">添加数据</a>
-        
+            {#    模糊查询模块    #}
             {% if showlist.config.search_fields %}
-                     <form action="" class="pull-right">
-                        <input class="form-control" style="display: inline-block;width:200px" type="text" name="q" value="{{ showlist.config.key_word }}"><button class="btn btn-default">search</button>
-                    </form>
+                <form action="" class="pull-right">
+                    <input class="form-control" style="display: inline-block;width:200px" type="text" name="q"
+                           value="{{ showlist.config.key_word }}">
+                    <button class="btn btn-default">search</button>
+                </form>
             {% endif %}
-
             <form action="" method="post">
-                    {% csrf_token %}
-                    <select name="action"  class="form-control" id="" style="width: 200px;margin: 8px 2px;display: inline-block;vertical-align: -1px">
-                         <option value="">---------------</option>
-                        {% for item in showlist.get_action_list %}
-                            <option value="{{ item.name }}">{{ item.desc }}</option>
+                {% csrf_token %}
+                {#    批量生成模块    #}
+                <select name="action" class="form-control" id=""
+                        style="width: 200px;margin: 8px 2px;display: inline-block;vertical-align: -1px">
+                    <option value="">---------------</option>
+                    {% for item in showlist.get_action_list %}
+                        <option value="{{ item.name }}">{{ item.desc }}</option>
+                    {% endfor %}
+                </select>
+                <button type="submit" class="btn btn-success">Go</button>
+                {#   表单数据   #}
+                <table class="table table-bordered table-striped">
+                    <thead>
+                    <tr>
+                        {% for item in showlist.get_header %}
+                            <th>{{ item }}</th>
                         {% endfor %}
-
-                    </select><button type="submit" class="btn btn-success">Go</button>
-                    <table class="table table-bordered table-striped">
-                        <thead>
-                             <tr>
-                                 {% for item in showlist.get_header %}
-                                   <th>{{ item }}</th>
-                                 {% endfor %}
-
-                             </tr>
-
-                        </thead>
-                        <tbody>
-                             {% for data in showlist.get_body %}
-
-                              <tr>
-                                  {% for item in data %}
-                                   <td>{{ item }}</td>
-                                  {% endfor %}
-
-                              </tr>
-                             {% endfor %}
-
-                        </tbody>
-                    </table>
-                        <nav class="pull-right">
-                            <ul class="pagination">
-                               {{ showlist.pagination.page_html|safe }}
-                            </ul>
-                        </nav>
-
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for data in showlist.get_body %}
+                        <tr>
+                            {% for item in data %}
+                                <td>{{ item }}</td>
+                            {% endfor %}
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                {#    分页模块        #}
+                <nav class="pull-right">
+                    <ul class="pagination">
+                        {{ showlist.pagination.page_html|safe }}
+                    </ul>
+                </nav>
             </form>
-        </div>
         </div>
     </div>
 </div>
-
-
-
+</div>
+{#    jquery和js控制多选模块    #}
 <script>
+    $("#choice").click(function () {
 
-   $("#choice").click(function () {
-
-     if($(this).prop("checked")){
-           $(".choice_item").prop("checked",true)
-     }else {
-           $(".choice_item").prop("checked",false)
-     }
-
-   })
-
+        if ($(this).prop("checked")) {
+            $(".choice_item").prop("checked", true)
+        } else {
+            $(".choice_item").prop("checked", false)
+        }
+    })
 </script>
 </body>
 </html>

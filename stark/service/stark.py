@@ -1,3 +1,6 @@
+"""
+    自定义stark组件
+"""
 from django.conf.urls import url
 from django.shortcuts import render,redirect
 from django.urls import reverse
@@ -6,7 +9,6 @@ from django.utils.safestring import mark_safe
 from stark.utils.page import Pagination
 from django.db.models.fields.related import ManyToManyField
 from django.forms import ModelForm
-
 
 # 展示页面
 class ShowList(object):
@@ -32,7 +34,6 @@ class ShowList(object):
                "name":action.__name__,
                "desc":action.short_description
            })  # [{"name":""patch_init,"desc":"批量初始化"}]
-
         return temp
 
     # 构建表头
@@ -270,6 +271,7 @@ class ModelStark(object):
 
 
 class StarkSite(object):
+
     def __init__(self):
         self._registry = {}
 
@@ -290,7 +292,6 @@ class StarkSite(object):
     @property
     def urls(self):
        return self.get_urls(),None,None
-
 
 site = StarkSite()
 

@@ -1,3 +1,4 @@
+{#前端添加页面#}
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -6,10 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.css">
     <script src="/static/js/jquery-1.12.4.min.js"></script>
-
-
+    {#复制bootstrap原生的css样式#}
     <style>
-
           input,select {
             display: block;
             width: 100%;
@@ -28,19 +27,14 @@
             -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
             transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
         }
-
         .error{
             color: red;
         }
-
     </style>
 </head>
 <body>
-
-
 <h3>添加页面</h3>
-
+{#引用include.html模板#}
 {% include 'form.html' %}
-
 </body>
 </html>
